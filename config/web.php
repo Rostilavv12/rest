@@ -1,8 +1,8 @@
 <?php
 
 $params = require __DIR__ . '/params.php';
-$routes = require __DIR__ . '/routes.php';
-$db = require __DIR__ . '/db.php';
+$modules = require __DIR__ . '/modules.php';
+$components = require __DIR__ . '/components.php';
 
 $config = [
     'id' => 'basic',
@@ -12,44 +12,8 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'components' => [
-        'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'C2cbxN7PIIZZh3PcnNb92mPJLgyHRW5v',
-        ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
-        ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
-        'db' => $db,
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => $routes,
-        ],
-    ],
+    'modules' => $modules,
+    'components' => $components,
     'params' => $params,
 ];
 
