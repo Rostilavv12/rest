@@ -1,0 +1,20 @@
+Options +FollowSymLinks
+IndexIgnore */*
+
+RewriteEngine on
+RewriteBase /
+
+# если это папка или файл, открываем его
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# в противном случае перенаправляем на index.php
+RewriteRule . index.php
+<IfModule mod_headers.c>
+    SetEnvIf Origin "(https://front.dev_rest.com.ua|back.dev_rest.com.ua|http://localhost:4200)$" ORIGIN_SUB_DOMAIN=$1
+    Header always set Access-Control-Allow-Origin %{ORIGIN_SUB_DOMAIN}e env=ORIGIN_SUB_DOMAIN
+    Header always set Access-Control-Allow-Credentials "true"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Access-Control-Allow-Headers, Authorization, X-Pagination-Current-Page, X-Pagination-Page-Count, X-Pagination-Per-Page, X-Pagination-Total-Count"
+    Header always set Access-Control-Expose-Headers "Content-Type, Access-Control-Allow-Headers, Authorization, X-Pagination-Current-Page, X-Pagination-Page-Count, X-Pagination-Per-Page, X-Pagination-Total-Count"
+</IfModule>
