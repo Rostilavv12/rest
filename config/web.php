@@ -1,6 +1,7 @@
 <?php
 
 $params = require __DIR__ . '/params.php';
+$routes = require __DIR__ . '/routes.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
@@ -43,14 +44,11 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => $routes,
         ],
-        */
     ],
     'params' => $params,
 ];
