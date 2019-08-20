@@ -31,3 +31,8 @@ tests/_support/_generated
 
 #vagrant folder
 /.vagrant
+
+#web env
+web/.htaccess
+web/index.php
+web/robots.txt
