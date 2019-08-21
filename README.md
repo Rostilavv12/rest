@@ -16,3 +16,5 @@ Setup project
 
 1. composer install
 2. php init 
+3. php yii migrate
+4. php yii user/generate-default

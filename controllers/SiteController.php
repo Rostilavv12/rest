@@ -35,9 +35,11 @@ class SiteController extends Controller
                 'class' => 'yii2mod\swagger\OpenAPIRenderer',
                 // Тhe list of directories that contains the swagger annotations.
                 'scanDir' => [
+                    Yii::getAlias('@app/modules/v1/controllers'),
+                    Yii::getAlias('@app/modules/v1/actions'),
                     Yii::getAlias('@app/controllers'),
                 ],
-                'cache' => null,
+                'cache' => YII_DEBUG ? null : true,
             ],
             'error' => [
                 'class' => 'yii\web\ErrorAction',
